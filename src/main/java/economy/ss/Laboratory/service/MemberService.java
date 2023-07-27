@@ -16,9 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
-    public Member saveMember(Member member) {
+    public void saveMember(Member member) {
         validateDuplicateMember(member);
-        return memberRepository.save(member);
+        memberRepository.save(member);
     }
 
     private void validateDuplicateMember(Member member) {
