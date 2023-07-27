@@ -15,18 +15,20 @@ import javax.persistence.*;
 @Table(name = "member")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Member {
+public class Member  extends BaseEntity{
 
     @Id
     @Column(name = "member_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true) // 이후에 validation 등 제한 추가할 것
     private String username;
 
-    private String password;
+    @Column
+    private String password;  // 이후에 validation 등 제한 추가할 것
 
-    @Column(unique = true)
+    @Column(unique = true)  // 이후에 validation 등 제한 추가할 것
     private String email;
 
     @Enumerated(EnumType.STRING)
