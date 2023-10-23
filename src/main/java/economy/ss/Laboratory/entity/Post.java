@@ -1,5 +1,6 @@
 package economy.ss.Laboratory.entity;
 
+import economy.ss.Laboratory.dto.PostFormDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -33,4 +34,12 @@ public class Post  extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    public static Post createPost(PostFormDto postFormDto) {
+        return Post.builder()
+                .title(postFormDto.getTitle())
+                .contents(postFormDto.getContent())
+                .category(postFormDto.getCategory())
+                .build();
+    }
 }
